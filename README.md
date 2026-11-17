@@ -29,46 +29,102 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-HQ-001：第一個專案接管掃描
-請執行 ai-agent-hq 指派的第一個專案掃描任務。
+HQ-002：Executive Dashboard — Manager Mode
+任務目標
 
-目標： https://github.com/xk2022/codex-xk-apparel-store
+將 private ai-agent-hq 改造成以管理者為核心的 AI 專案決策中控台。
 
-本次嚴格限制 READ ONLY。
+管理者不需要閱讀完整技術報告，即可掌握各專案的健康狀態、重要風險、Agent 執行成果及下一步建議。
 
-啟動：
+核心原則
+管理者優先，不以工程師報告閱讀方式設計首頁。
+所有管理摘要必須能追溯至原始報告及實際證據。
+嚴格區分已驗證、推論、未執行及待批准。
+Agent 可以提出建議，但不得自行將建議視為授權。
+不得影響既有 Agent 派工及執行機制。
+派工角色
+Architect Agent：盤點現有 HQ 架構及首頁。
+Research Agent：設計管理摘要及專案健康度模型。
+QA Agent：制定摘要正確性及介面驗收案例。
+Security Agent：確認私有管理資料及存取安全。
+Main Agent：整合、實作、驗收及產生最終報告。
+工作範圍
+WP-1：Executive Summary
 
-Architect Agent
-Research Agent
-QA Agent
-Security Agent
-由 Main Agent 整合。
+建立統一管理摘要格式，至少包含：
 
-請分析：
+專案一句話狀態
+任務完成進度
+重要發現
+風險及優先級
+商業就緒度
+Main Agent 下一步建議
+管理者待決策事項
+原始報告與證據連結
+WP-2：Management Dashboard
 
-專案目錄及技術棧
-Node.js 和 TypeScript 設定
-商品及訂單資料模型
-前端功能及使用者流程
-測試覆蓋率及測試結果
-GitHub Actions
-GitHub Pages 部署
-資料儲存方式
-安全風險
-商業化缺口
-未來開發優先順序
-執行：
+調整 HQ 首頁，提供：
 
-npm ci npm test
+專案總覽
+專案健康狀態
+高優先級風險
+最近完成的任務
+等待管理者決策的事項
+Main Agent 管理建議
 
-只能在隔離的 Cloud 工作環境執行。
+首頁以管理摘要為主，不預設顯示完整技術日誌。
 
-不得修改已追蹤的檔案。 不得建立 Commit。 不得部署。 不得接觸正式憑證。
+WP-3：Project Health
 
-最後輸出：
+建立一致的狀態分類：
 
-scan-report.md architecture.md roadmap.md
+Healthy
+Needs Attention
+At Risk
+Blocked
+Unknown
 
-每項結論必須附上實際證據。
+不得只依測試通過率判斷專案健康度。
 
-完成後回報給 ai-agent-hq，等待下一個任務。
+WP-4：Report Navigation
+
+保留完整技術報告及證據，提供由管理摘要進入原始報告的能力。
+
+第一個驗收專案
+
+使用既有 codex-xk-apparel-store 的 HQ-001 掃描結果。
+
+產生第一份 executive-summary.md，並確認：
+
+25/25 測試結果正確
+1 項 High 依賴安全風險正確呈現
+正式商用缺口正確呈現
+未執行項目沒有被標示為通過
+Main Agent 建議與管理者待決策事項明確分開
+安全與部署限制
+本次只允許修改 private ai-agent-hq。
+不得修改 public codex-xk-apparel-store。
+不得將私有報告及 Agent 執行紀錄部署到 public 網站。
+不得接觸正式憑證。
+不得自行部署。
+實際修改前先提交架構盤點與實作計畫，等待管理者批准。
+最終交付
+executive-summary.md
+MANAGER-MODE.md
+管理首頁實作
+專案健康度及風險分類規格
+QA 驗收報告
+Security 審查報告
+Main Agent 整合報告
+完成定義
+
+管理者開啟 HQ 首頁後，10 秒內能回答：
+
+現在有哪些專案？
+哪些專案有問題？
+最重要的風險是什麼？
+Agent 最近完成了什麼？
+下一步應該做什麼？
+哪些事情需要我批准？
+
+完成規劃後停止，等待管理者授權實際修改。
